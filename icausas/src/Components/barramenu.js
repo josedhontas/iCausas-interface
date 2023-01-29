@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
+import Grafico from './grafico';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -13,7 +14,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import QuizIcon from '@mui/icons-material/Quiz';
@@ -23,6 +23,7 @@ import EqualizerIcon from '@mui/icons-material/Equalizer';
 import HelpIcon from '@mui/icons-material/Help';
 import MessageIcon from '@mui/icons-material/Message';
 const drawerWidth = 240;
+
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -81,6 +82,46 @@ export default function Barramenu() {
     setOpen(false);
   };
 
+  const menuItens = [
+    {
+      text: 'Home',
+      icon: <HomeIcon />,
+      path: 'luz1'
+    },
+    {
+      text: 'Gráficos',
+      icon: <EqualizerIcon />,
+      path: 'luz1'
+    },
+
+    {
+      text: 'Ajuda',
+      icon: <HelpIcon />,
+      path: 'luz1'
+    },
+
+    
+    {
+      text: 'Contato',
+      icon: <MessageIcon />,
+      path: 'luz1'
+    },
+  ]
+
+  const menuItens2 = [
+    {
+      text: 'Conta',
+      icon: <AccountCircleIcon />,
+      path: 'luz1'
+    },
+
+    {
+      text: 'Questionário',
+      icon: <QuizIcon />,
+      path: 'luz'
+    }
+
+  ]
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -120,36 +161,34 @@ export default function Barramenu() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Home', 'Gráficos', 'Ajuda', 'Contato'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index === 0 && <HomeIcon/>}
-                  {index === 1 && <EqualizerIcon/>}
-                  {index === 2 && <HelpIcon />}
-                  {index === 3 && <MessageIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
+          {menuItens.map(item => (
+            <ListItem
+              button
+              key={item.text}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text}></ListItemText>
             </ListItem>
           ))}
         </List>
+
         <Divider />
         <List>
-          {['Conta', 'Questionário'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <AccountCircleIcon /> : <QuizIcon/>}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
+          {menuItens2.map(item => (
+            <ListItem
+              button
+              key={item.text}
+              onClick={() => alert(item.path)}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text}></ListItemText>
             </ListItem>
           ))}
         </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
+        <Grafico></Grafico>
         <Typography paragraph>
           texto
         </Typography>
