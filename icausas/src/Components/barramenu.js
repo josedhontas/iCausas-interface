@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -91,7 +91,7 @@ export default function Barramenu() {
     {
       text: 'Gráficos',
       icon: <EqualizerIcon />,
-      path: 'luz1'
+      path: <Grafico/>
     },
 
     {
@@ -122,6 +122,7 @@ export default function Barramenu() {
     }
 
   ]
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -169,6 +170,7 @@ export default function Barramenu() {
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text}></ListItemText>
             </ListItem>
+            
           ))}
         </List>
 
@@ -178,7 +180,6 @@ export default function Barramenu() {
             <ListItem
               button
               key={item.text}
-              onClick={() => alert(item.path)}
             >
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text}></ListItemText>
@@ -188,13 +189,7 @@ export default function Barramenu() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <Grafico></Grafico>
-        <Typography paragraph>
-          texto
-        </Typography>
-        <Typography paragraph>
-          texto
-        </Typography>
+        {<Grafico/>}
       </Main>
     </Box>
   );
