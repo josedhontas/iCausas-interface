@@ -18,8 +18,8 @@ export default function Login() {
         <Grid align='center'>             <Avatar><LockIcon/></Avatar>
           <h2>iCausas</h2>
         </Grid>
-        <TextField label='Email' placeholder='Enter username' fullWidth required></TextField>
-        <TextField label='Senha' placeholder='Enter password' type='password' fullWidth required></TextField>
+        <TextField label='Email' placeholder='Insira seu email' fullWidth required></TextField>
+        <TextField label='Senha' placeholder='Insira sua senha' type='password' fullWidth required></TextField>
         <FormGroup>
           <FormControlLabel control={<Checkbox />} label="Manter conectado" />
           <Button type='submit' variant='contained' style={btnstyle}>
