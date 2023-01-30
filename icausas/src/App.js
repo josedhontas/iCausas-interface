@@ -6,7 +6,7 @@ import Cadastro from './Pages/cadastro'
 
 function App() {
   return (
-    <Cadastro> </Cadastro>
+    <Barramenu> </Barramenu>
     );
 }
 
