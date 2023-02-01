@@ -10,8 +10,8 @@ __Bibliotecas usadas:__
 - Recharts version 2.3.2
 
 
-#### Comandos para executar o projeto:
+__Para executar o projeto digite no terminal:__
 
-#### npm update --force
+- npm update --force
 
-#### npm start
+- npm start
