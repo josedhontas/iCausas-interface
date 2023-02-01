@@ -4,9 +4,9 @@
 
 __Bibliotecas usadas:__
 
--material-ui/core version 4
--material-ui/icons version 4
--Recharts version 2.3.2
+- material-ui/core version 4
+- material-ui/icons version 4
+- Recharts version 2.3.2
 
 
 #### Comandos para executar o projeto:
