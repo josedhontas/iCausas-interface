@@ -22,6 +22,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import HelpIcon from '@mui/icons-material/Help';
 import MessageIcon from '@mui/icons-material/Message';
+import GraficoDois from './graficodois';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
+
 const drawerWidth = 240;
 
 
@@ -118,6 +122,11 @@ export default function Barramenu() {
       text: 'Questionário',
       icon: <QuizIcon />,
       path: 'luz'
+    },
+    {
+      text: 'Sair',
+      icon: <ExitToAppIcon />,
+      path: 'luz'
     }
 
   ]
@@ -188,7 +197,7 @@ export default function Barramenu() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <GraficoUm></GraficoUm>
+        <GraficoDois></GraficoDois>
 
       </Main>
 

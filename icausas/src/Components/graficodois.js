@@ -19,17 +19,19 @@ import {
 } from "recharts";
 import Select from '@mui/material/Select';
 
-export default function GraficoUm() {
+export default function GraficoDois() {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
   };
 
-  const dd = require('./api/sucesso')
+  const dd = require('./api/cc')
   const data = dd['cc']
   const datas = Object.keys(data)
-  console.log(data[datas[2]].Ano)
+  const data2 = data['2018.2']
+  const materias = Object.keys(data2)
+
 
   const [select1, setSelects1] = useState();
   const [select2, setSelects2] = useState();
@@ -83,16 +85,17 @@ export default function GraficoUm() {
           
           <Paper elevation={10} style={paperStyle} >
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="">Inicio</InputLabel>
+              <InputLabel id="">Disciplina</InputLabel>
               <Select onChange={e => setSelects1(e.target.value)}>
-                {datas.map(item => (
-                  <MenuItem value={item}>{item}</MenuItem>
+                {}
+                {materias.map(item => (
+                  <MenuItem value={data2[item].nome}>{data2[item].nome}</MenuItem>
                 ))
                 }
               </Select>
             </FormControl>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="">Fim</InputLabel>
+              <InputLabel id="">Periodo</InputLabel>
               <Select onChange={e => setSelects2(e.target.value)}>
                 {datas.map(item => (
                   <MenuItem value={item}>{item}</MenuItem>
