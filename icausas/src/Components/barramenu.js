@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
-import Grafico from '../Pages/grafico';
+import GraficoUm from './graficoum';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -91,7 +91,6 @@ export default function Barramenu() {
     {
       text: 'Gráficos',
       icon: <EqualizerIcon />,
-      path: <Grafico/>
     },
 
     {
@@ -189,8 +188,11 @@ export default function Barramenu() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        {<Grafico/>}
+        <GraficoUm></GraficoUm>
+
       </Main>
+
+
     </Box>
   );
 }

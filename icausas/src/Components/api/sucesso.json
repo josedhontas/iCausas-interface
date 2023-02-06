@@ -1,0 +1,346 @@
+{
+    "cc":{
+        "2010":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2011":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2012":{
+            "Ingressantes": 52,
+            "Diplomados": 1,
+            "PrimeiroSemestre": 1,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 1.92
+        },
+        "2013":{
+            "Ingressantes": 127,
+            "Diplomados": 8,
+            "PrimeiroSemestre": 2,
+            "SegundoSemestre": 6,
+            "TaxadeSucessoporAno": 6.30
+        },
+        "2014":{
+            "Ingressantes": 113,
+            "Diplomados": 13,
+            "PrimeiroSemestre": 6,
+            "SegundoSemestre": 7,
+            "TaxadeSucessoporAno": 11.50
+        },
+        "2015":{
+            "Ingressantes": 127,
+            "Diplomados": 33,
+            "PrimeiroSemestre": 13,
+            "SegundoSemestre": 20,
+            "TaxadeSucessoporAno": 25.98
+        },
+        "2016":{
+            "Ingressantes": 108,
+            "Diplomados": 16,
+            "PrimeiroSemestre": 5,
+            "SegundoSemestre": 11,
+            "TaxadeSucessoporAno": 14.81
+        },
+        "2017":{
+            "Ingressantes": 127,
+            "Diplomados": 23,
+            "PrimeiroSemestre": 11,
+            "SegundoSemestre": 12,
+            "TaxadeSucessoporAno": 18.11
+        },
+        "2018":{
+            "Ingressantes": 105,
+            "Diplomados": 28,
+            "PrimeiroSemestre": 13,
+            "SegundoSemestre": 15,
+            "TaxadeSucessoporAno": 26.67
+        },
+        "2019":{
+            "Ingressantes": 99,
+            "Diplomados": 27,
+            "PrimeiroSemestre": 10,
+            "SegundoSemestre": 17,
+            "TaxadeSucessoporAno": 27.27
+        },
+        "2020":{
+            "Ingressantes": 100,
+            "Diplomados": 13,
+            "PrimeiroSemestre": 3,
+            "SegundoSemestre": 10,
+            "TaxadeSucessoporAno": 13.00
+        },
+        "2021":{
+            "Ingressantes": 99,
+            "Diplomados": 27,
+            "PrimeiroSemestre": 12,
+            "SegundoSemestre": 15,
+            "TaxadeSucessoporAno": 27.27
+        }
+    },
+    "ecm":{
+        "2010":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2011":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2012":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2013":{
+            "Ingressantes": 50,
+            "Diplomados": 5,
+            "PrimeiroSemestre": 1,
+            "SegundoSemestre": 4,
+            "TaxadeSucessoporAno": 10.00
+        },
+        "2014":{
+            "Ingressantes": 50,
+            "Diplomados": 5,
+            "PrimeiroSemestre": 3,
+            "SegundoSemestre": 2,
+            "TaxadeSucessoporAno": 10.00
+        },
+        "2015":{
+            "Ingressantes": 57,
+            "Diplomados": 7,
+            "PrimeiroSemestre": 3,
+            "SegundoSemestre": 4,
+            "TaxadeSucessoporAno": 12.28
+        },
+        "2016":{
+            "Ingressantes": 64,
+            "Diplomados": 5,
+            "PrimeiroSemestre": 1,
+            "SegundoSemestre": 4,
+            "TaxadeSucessoporAno": 7.81
+        },
+        "2017":{
+            "Ingressantes": 61,
+            "Diplomados": 9,
+            "PrimeiroSemestre": 7,
+            "SegundoSemestre": 2,
+            "TaxadeSucessoporAno": 14.75
+        },
+        "2018":{
+            "Ingressantes": 73,
+            "Diplomados": 11,
+            "PrimeiroSemestre": 3,
+            "SegundoSemestre": 8,
+            "TaxadeSucessoporAno": 15.07
+        },
+        "2019":{
+            "Ingressantes": 75,
+            "Diplomados": 14,
+            "PrimeiroSemestre": 5,
+            "SegundoSemestre": 9,
+            "TaxadeSucessoporAno": 18.67
+        },
+        "2020":{
+            "Ingressantes": 3,
+            "Diplomados": 7,
+            "PrimeiroSemestre": 5,
+            "SegundoSemestre": 2,
+            "TaxadeSucessoporAno": 233.33
+        },
+        "2021":{
+            "Ingressantes": 1,
+            "Diplomados": 2,
+            "PrimeiroSemestre": 1,
+            "SegundoSemestre": 1,
+            "TaxadeSucessoporAno": 200.00
+        }
+    },
+    "ecv":{
+        "2010":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2011":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2012":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2013":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2014":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2015":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2016":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2017":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2018":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2019":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2020":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2021":{
+            "Ingressantes": 50,
+            "Diplomados": 5,
+            "PrimeiroSemestre": 1,
+            "SegundoSemestre": 4,
+            "TaxadeSucessoporAno": 10.00
+        }
+    },
+    "si":{
+        "2010":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2011":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2012":{
+            "Ingressantes": 0,
+            "Diplomados": 0,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 0,
+            "TaxadeSucessoporAno": 0
+        },
+        "2013":{
+            "Ingressantes": 55,
+            "Diplomados": 1,
+            "PrimeiroSemestre": 0,
+            "SegundoSemestre": 1,
+            "TaxadeSucessoporAno": 1.82
+        },
+        "2014":{
+            "Ingressantes": 58,
+            "Diplomados": 10,
+            "PrimeiroSemestre": 9,
+            "SegundoSemestre": 1,
+            "TaxadeSucessoporAno": 17.24
+        },
+        "2015":{
+            "Ingressantes": 66,
+            "Diplomados": 8,
+            "PrimeiroSemestre": 4,
+            "SegundoSemestre": 4,
+            "TaxadeSucessoporAno": 12.12
+        },
+        "2016":{
+            "Ingressantes": 50,
+            "Diplomados": 17,
+            "PrimeiroSemestre": 12,
+            "SegundoSemestre": 5,
+            "TaxadeSucessoporAno": 34.00
+        },
+        "2017":{
+            "Ingressantes": 51,
+            "Diplomados": 21,
+            "PrimeiroSemestre": 15,
+            "SegundoSemestre": 6,
+            "TaxadeSucessoporAno": 41.18
+        },
+        "2018":{
+            "Ingressantes": 64,
+            "Diplomados": 18,
+            "PrimeiroSemestre": 8,
+            "SegundoSemestre": 10,
+            "TaxadeSucessoporAno": 23.13
+        },
+        "2019":{
+            "Ingressantes": 49,
+            "Diplomados": 9,
+            "PrimeiroSemestre": 3,
+            "SegundoSemestre": 6,
+            "TaxadeSucessoporAno": 18.37
+        },
+        "2020":{
+            "Ingressantes": 49,
+            "Diplomados": 8,
+            "PrimeiroSemestre": 3,
+            "SegundoSemestre": 5,
+            "TaxadeSucessoporAno": 16.33
+        },
+        "2021":{
+            "Ingressantes": 49,
+            "Diplomados": 4,
+            "PrimeiroSemestre": 3,
+            "SegundoSemestre": 1,
+            "TaxadeSucessoporAno": 8.16
+        }
+    }
+}
