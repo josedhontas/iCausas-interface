@@ -20,6 +20,50 @@ import {
 import Select from '@mui/material/Select';
 
 export default function GraficoDois() {
+  const datax = [
+    {
+      "Ingressantes": 0,
+      "Diplomados": 0,
+      "PrimeiroSemestre": 0,
+      "SegundoSemestre": 0,
+      "TaxadeSucessoporAno": 0
+    },
+    {
+      "Ingressantes": 0,
+      "Diplomados": 0,
+      "PrimeiroSemestre": 0,
+      "SegundoSemestre": 0,
+      "TaxadeSucessoporAno": 0
+    },
+    {
+      "Ingressantes": 52,
+      "Diplomados": 1,
+      "PrimeiroSemestre": 1,
+      "SegundoSemestre": 0,
+      "TaxadeSucessoporAno": 1.92
+    },
+    {
+      "Ingressantes": 127,
+      "Diplomados": 8,
+      "PrimeiroSemestre": 2,
+      "SegundoSemestre": 6,
+      "TaxadeSucessoporAno": 6.30
+    },
+    {
+      "Ingressantes": 113,
+      "Diplomados": 13,
+      "PrimeiroSemestre": 6,
+      "SegundoSemestre": 7,
+      "TaxadeSucessoporAno": 11.50
+    },
+    {
+      "Ingressantes": 127,
+      "Diplomados": 33,
+      "PrimeiroSemestre": 13,
+      "SegundoSemestre": 20,
+      "TaxadeSucessoporAno": 25.98
+    }
+  ];
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
@@ -59,7 +103,7 @@ export default function GraficoDois() {
             <LineChart
               width={500}
               height={300}
-              data={data}
+              data={datax}
               margin={{
                 top: 20,
                 right: 30,
@@ -123,13 +167,12 @@ export default function GraficoDois() {
 }
 
 
-var data;
+var datax;
 
-console.log(data);
 
 
 function formata() {
-  data = [
+  datax = [
     {
       "Ingressantes": 0,
       "Diplomados": 0,
@@ -180,54 +223,7 @@ function formata() {
 
 
 
-console.log(data);
-
-function Grafico() {
-  return (
-    <Grid>
-      <Box
-        sx={{
-          display: 'center',
-          flexWrap: 'wrap',
-          '& > :not(style)': {
-            m: 5,
-            width: 530,
-            height: 330,
-          },
-        }}
-      >
-        <Paper elevation={10}>
-          <LineChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 10
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Ingressantes" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="Ingressantes"
-              stroke="#8884d8"
-              activeDot={{ r: 8 }}
-            />
-            <Line type="monotone" dataKey="Ingressantes" stroke="#82ca9d" />
-          </LineChart>
-        </Paper>
-        <Paper></Paper>
-
-      </Box>
-    </Grid>
-  );
 
 
-}
+
 

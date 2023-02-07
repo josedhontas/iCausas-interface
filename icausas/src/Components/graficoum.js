@@ -29,14 +29,17 @@ export default function GraficoUm() {
   const dd = require('./api/sucesso')
   const data = dd['cc']
   const datas = Object.keys(data)
-  console.log(data[datas[2]].Ano)
 
   const [select1, setSelects1] = useState();
   const [select2, setSelects2] = useState();
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
-  const btnstyle = { margin: '5px 0' }
+  var datay = [data[datas[select1]]]
+  var datt = []
+  let i;
+  for(i = select1; i <=select2; i++){
+    datt = datt.concat(data[datas[i]]);
 
-
+  }
 
 
   return (
@@ -57,7 +60,7 @@ export default function GraficoUm() {
             <LineChart
               width={500}
               height={300}
-              data={data}
+              data={datt}
               margin={{
                 top: 20,
                 right: 30,
@@ -73,7 +76,7 @@ export default function GraficoUm() {
               <Legend />
               <Line
                 type="monotone"
-                dataKey="Ingressantes"
+                dataKey="Diplomados"
                 stroke="#8884d8"
                 activeDot={{ r: 8 }}
               />
@@ -85,8 +88,8 @@ export default function GraficoUm() {
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Inicio</InputLabel>
               <Select onChange={e => setSelects1(e.target.value)}>
-                {datas.map(item => (
-                  <MenuItem value={item}>{item}</MenuItem>
+                {datas.map((item, i) => (
+                  <MenuItem value={i}>{item}</MenuItem>
                 ))
                 }
               </Select>
@@ -94,8 +97,8 @@ export default function GraficoUm() {
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Fim</InputLabel>
               <Select onChange={e => setSelects2(e.target.value)}>
-                {datas.map(item => (
-                  <MenuItem value={item}>{item}</MenuItem>
+                {datas.map((item, i) => (
+                  <MenuItem value={i}>{item}</MenuItem>
                 ))
                 }
 
@@ -103,7 +106,7 @@ export default function GraficoUm() {
 
             </FormControl>
             <Button
-              type='submit' variant='contained' onClick={() => formata()}>
+              type='submit' variant='contained' onClick={()=>console.log({datt})}>
               Criar
             </Button>
           </Paper>
@@ -119,112 +122,4 @@ export default function GraficoUm() {
   );
 }
 
-
-var data;
-
-console.log(data);
-
-
-function formata() {
-  data = [
-    {
-      "Ingressantes": 0,
-      "Diplomados": 0,
-      "PrimeiroSemestre": 0,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 0
-    },
-    {
-      "Ingressantes": 0,
-      "Diplomados": 0,
-      "PrimeiroSemestre": 0,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 0
-    },
-    {
-      "Ingressantes": 52,
-      "Diplomados": 1,
-      "PrimeiroSemestre": 1,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 1.92
-    },
-    {
-      "Ingressantes": 127,
-      "Diplomados": 8,
-      "PrimeiroSemestre": 2,
-      "SegundoSemestre": 6,
-      "TaxadeSucessoporAno": 6.30
-    },
-    {
-      "Ingressantes": 113,
-      "Diplomados": 13,
-      "PrimeiroSemestre": 6,
-      "SegundoSemestre": 7,
-      "TaxadeSucessoporAno": 11.50
-    },
-    {
-      "Ingressantes": 127,
-      "Diplomados": 33,
-      "PrimeiroSemestre": 13,
-      "SegundoSemestre": 20,
-      "TaxadeSucessoporAno": 25.98
-    }
-  ];
-
-}
-
-
-
-
-
-console.log(data);
-
-function Grafico() {
-  return (
-    <Grid>
-      <Box
-        sx={{
-          display: 'center',
-          flexWrap: 'wrap',
-          '& > :not(style)': {
-            m: 5,
-            width: 530,
-            height: 330,
-          },
-        }}
-      >
-        <Paper elevation={10}>
-          <LineChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 10
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Ingressantes" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="Ingressantes"
-              stroke="#8884d8"
-              activeDot={{ r: 8 }}
-            />
-            <Line type="monotone" dataKey="Ingressantes" stroke="#82ca9d" />
-          </LineChart>
-        </Paper>
-        <Paper></Paper>
-
-      </Box>
-    </Grid>
-  );
-
-
-}
 
