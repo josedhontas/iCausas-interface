@@ -197,7 +197,7 @@ export default function Barramenu() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <GraficoUm></GraficoUm>
+        <GraficoDois></GraficoDois>
 
       </Main>
 

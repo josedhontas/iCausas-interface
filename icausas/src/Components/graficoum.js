@@ -20,11 +20,6 @@ import {
 import Select from '@mui/material/Select';
 
 export default function GraficoUm() {
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   const dd = require('./api/sucesso')
   const data = dd['cc']
@@ -33,7 +28,6 @@ export default function GraficoUm() {
   const [select1, setSelects1] = useState();
   const [select2, setSelects2] = useState();
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
-  var datay = [data[datas[select1]]]
   var datt = []
   let i;
   for(i = select1; i <=select2; i++){
@@ -70,7 +64,7 @@ export default function GraficoUm() {
 
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="Ingressantes" />
+              <XAxis dataKey="Ano" />
               <YAxis />
               <Tooltip />
               <Legend />
@@ -105,10 +99,7 @@ export default function GraficoUm() {
               </Select>
 
             </FormControl>
-            <Button
-              type='submit' variant='contained' onClick={()=>console.log({datt})}>
-              Criar
-            </Button>
+            
           </Paper>
 
         </Box>

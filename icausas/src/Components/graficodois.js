@@ -7,69 +7,55 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import { Grid } from "@mui/material";
-
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from "recharts";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Select from '@mui/material/Select';
 
 export default function GraficoDois() {
   const datax = [
     {
-      "Ingressantes": 0,
-      "Diplomados": 0,
-      "PrimeiroSemestre": 0,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 0
+      name: 'Page A',
+      uv: 4000,
+      pv: 2400,
+      amt: 2400,
     },
     {
-      "Ingressantes": 0,
-      "Diplomados": 0,
-      "PrimeiroSemestre": 0,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 0
+      name: 'Page B',
+      uv: 3000,
+      pv: 1398,
+      amt: 2210,
     },
     {
-      "Ingressantes": 52,
-      "Diplomados": 1,
-      "PrimeiroSemestre": 1,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 1.92
+      name: 'Page C',
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
     },
     {
-      "Ingressantes": 127,
-      "Diplomados": 8,
-      "PrimeiroSemestre": 2,
-      "SegundoSemestre": 6,
-      "TaxadeSucessoporAno": 6.30
+      name: 'Page D',
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
     },
     {
-      "Ingressantes": 113,
-      "Diplomados": 13,
-      "PrimeiroSemestre": 6,
-      "SegundoSemestre": 7,
-      "TaxadeSucessoporAno": 11.50
+      name: 'Page E',
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
     },
     {
-      "Ingressantes": 127,
-      "Diplomados": 33,
-      "PrimeiroSemestre": 13,
-      "SegundoSemestre": 20,
-      "TaxadeSucessoporAno": 25.98
-    }
+      name: 'Page F',
+      uv: 2390,
+      pv: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'Page G',
+      uv: 3490,
+      pv: 4300,
+      amt: 2100,
+    },
   ];
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
+ 
   const dd = require('./api/cc')
   const data = dd['cc']
   const datas = Object.keys(data)
@@ -79,9 +65,8 @@ export default function GraficoDois() {
 
   const [select1, setSelects1] = useState();
   const [select2, setSelects2] = useState();
+  const [select3, setSelects3] = useState();
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
-  const btnstyle = { margin: '5px 0' }
-
 
 
 
@@ -100,33 +85,28 @@ export default function GraficoDois() {
           }}
         >
           <Paper elevation={10}>
-            <LineChart
-              width={500}
-              height={300}
-              data={datax}
-              margin={{
-                top: 20,
-                right: 30,
-                left: 20,
-                bottom: 10
-              }}
-
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="Ingressantes" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="Ingressantes"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-              <Line type="monotone" dataKey="Ingressantes" stroke="#82ca9d" />
-            </LineChart>
+          <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          width={500}
+          height={300}
+          data={datax}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="pv" fill="#8884d8" />
+          <Bar dataKey="uv" fill="#82ca9d" />
+        </BarChart>
+      </ResponsiveContainer>
           </Paper>
-          
           <Paper elevation={10} style={paperStyle} >
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Disciplina</InputLabel>
@@ -139,7 +119,7 @@ export default function GraficoDois() {
               </Select>
             </FormControl>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="">Periodo</InputLabel>
+              <InputLabel id="">Inicio</InputLabel>
               <Select onChange={e => setSelects2(e.target.value)}>
                 {datas.map(item => (
                   <MenuItem value={item}>{item}</MenuItem>
@@ -149,10 +129,18 @@ export default function GraficoDois() {
               </Select>
 
             </FormControl>
-            <Button
-              type='submit' variant='contained' onClick={() => formata()}>
-              Criar
-            </Button>
+            <FormControl sx={{ m: 1, minWidth: 120 }}>
+              <InputLabel id="">Fim</InputLabel>
+              <Select onChange={e => setSelects3(e.target.value)}>
+                {datas.map(item => (
+                  <MenuItem value={item}>{item}</MenuItem>
+                ))
+                }
+
+              </Select>
+
+            </FormControl>
+
           </Paper>
 
         </Box>
