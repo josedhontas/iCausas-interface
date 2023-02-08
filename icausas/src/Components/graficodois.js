@@ -11,56 +11,13 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 import Select from '@mui/material/Select';
 
 export default function GraficoDois() {
-  const datax = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
  
   const dd = require('./api/cc')
   const data = dd['cc']
   const datas = Object.keys(data)
   const data2 = data['2018.2']
   const materias = Object.keys(data2)
+  const materiasaux = Object['2018.2']
 
 
   const [select1, setSelects1] = useState();
@@ -68,6 +25,17 @@ export default function GraficoDois() {
   const [select3, setSelects3] = useState();
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
 
+  var datt = []
+  var dutt = []
+  var aux = []
+  let i;
+  for(i = select2; i <=select3; i++){
+    aux = (data[datas[i]]);
+    aux[select1].Ano = datas[i]
+    datt = datt.concat(aux[select1]);
+    
+
+  }
 
 
   return (
@@ -89,7 +57,7 @@ export default function GraficoDois() {
         <BarChart
           width={500}
           height={300}
-          data={datax}
+          data={datt}
           margin={{
             top: 5,
             right: 30,
@@ -98,12 +66,12 @@ export default function GraficoDois() {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="Ano" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
+          <Bar dataKey="Aprovados" fill="#8884d8" />
+          <Bar dataKey="Reprovados" fill="#82ca9d" />
         </BarChart>
       </ResponsiveContainer>
           </Paper>
@@ -113,7 +81,7 @@ export default function GraficoDois() {
               <Select onChange={e => setSelects1(e.target.value)}>
                 {}
                 {materias.map(item => (
-                  <MenuItem value={data2[item].nome}>{data2[item].nome}</MenuItem>
+                  <MenuItem value={item}>{data2[item].nome}</MenuItem>
                 ))
                 }
               </Select>
@@ -121,8 +89,8 @@ export default function GraficoDois() {
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Inicio</InputLabel>
               <Select onChange={e => setSelects2(e.target.value)}>
-                {datas.map(item => (
-                  <MenuItem value={item}>{item}</MenuItem>
+                {datas.map((item, i) => (
+                  <MenuItem value={i}>{item}</MenuItem>
                 ))
                 }
 
@@ -132,10 +100,11 @@ export default function GraficoDois() {
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Fim</InputLabel>
               <Select onChange={e => setSelects3(e.target.value)}>
-                {datas.map(item => (
-                  <MenuItem value={item}>{item}</MenuItem>
+                {datas.map((item, i) => (
+                  <MenuItem value={i}>{item}</MenuItem>
                 ))
                 }
+
 
               </Select>
 
@@ -159,53 +128,6 @@ var datax;
 
 
 
-function formata() {
-  datax = [
-    {
-      "Ingressantes": 0,
-      "Diplomados": 0,
-      "PrimeiroSemestre": 0,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 0
-    },
-    {
-      "Ingressantes": 0,
-      "Diplomados": 0,
-      "PrimeiroSemestre": 0,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 0
-    },
-    {
-      "Ingressantes": 52,
-      "Diplomados": 1,
-      "PrimeiroSemestre": 1,
-      "SegundoSemestre": 0,
-      "TaxadeSucessoporAno": 1.92
-    },
-    {
-      "Ingressantes": 127,
-      "Diplomados": 8,
-      "PrimeiroSemestre": 2,
-      "SegundoSemestre": 6,
-      "TaxadeSucessoporAno": 6.30
-    },
-    {
-      "Ingressantes": 113,
-      "Diplomados": 13,
-      "PrimeiroSemestre": 6,
-      "SegundoSemestre": 7,
-      "TaxadeSucessoporAno": 11.50
-    },
-    {
-      "Ingressantes": 127,
-      "Diplomados": 33,
-      "PrimeiroSemestre": 13,
-      "SegundoSemestre": 20,
-      "TaxadeSucessoporAno": 25.98
-    }
-  ];
-
-}
 
 
 
