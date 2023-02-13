@@ -30,10 +30,19 @@ export default function GraficoUm() {
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
   var datt = []
   let i;
+  var aux
   for(i = select1; i <=select2; i++){
-    datt = datt.concat(data[datas[i]]);
+    if(data[datas[i]].Ingressantes == 0 && data[datas[i]].Diplomados == 0){
+      datt = datt.concat({"Ano":data[datas[i]].Ano});
+    }
+    else{
+      datt = datt.concat(data[datas[i]]);
+
+    }
 
   }
+
+  console.log(datt)
 
 
   return (

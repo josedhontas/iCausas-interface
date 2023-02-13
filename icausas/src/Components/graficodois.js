@@ -15,9 +15,9 @@ export default function GraficoDois() {
   const dd = require('./api/cc')
   const data = dd['cc']
   const datas = Object.keys(data)
-  const data2 = data['2018.2']
+  const data2 = data['2019.2']
   const materias = Object.keys(data2)
-  const materiasaux = Object['2018.2']
+  const materiasaux = Object['2019.2']
 
 
   const [select1, setSelects1] = useState();
