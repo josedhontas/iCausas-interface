@@ -24,6 +24,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import MessageIcon from '@mui/icons-material/Message';
 import GraficoDois from './graficodois';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import Teste from "./teste";
 
 
 const drawerWidth = 240;
@@ -197,7 +198,7 @@ export default function Barramenu() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <GraficoUm></GraficoUm>
+        <GraficoDois></GraficoDois>
 
       </Main>
 

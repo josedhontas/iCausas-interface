@@ -5,9 +5,16 @@ import Paper from '@mui/material/Paper';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Button from '@mui/material/Button';
 import { Grid } from "@mui/material";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend
+} from "recharts";
 import Select from '@mui/material/Select';
 
 export default function GraficoDois() {
@@ -18,7 +25,6 @@ export default function GraficoDois() {
   const data2 = data['2019.2']
   const materias = Object.keys(data2)
   const materiasaux = Object['2019.2']
-
 
   const [select1, setSelects1] = useState();
   const [select2, setSelects2] = useState();
@@ -33,10 +39,7 @@ export default function GraficoDois() {
     aux = (data[datas[i]]);
     aux[select1].Ano = datas[i]
     datt = datt.concat(aux[select1]);
-    
-
   }
-
 
   return (
     <div>
@@ -52,28 +55,32 @@ export default function GraficoDois() {
             },
           }}
         >
-          <Paper elevation={10}>
-          <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          width={500}
-          height={300}
-          data={datt}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="Ano" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="Aprovados" fill="#8884d8" />
-          <Bar dataKey="Reprovados" fill="#82ca9d" />
-        </BarChart>
-      </ResponsiveContainer>
+<Paper elevation={10}>
+            <LineChart
+              width={500}
+              height={300}
+              data={datt}
+              margin={{
+                top: 20,
+                right: 30,
+                left: 20,
+                bottom: 10
+              }}
+
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="Ano" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="Aprovados"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+              <Line type="monotone" dataKey="Reprovados" stroke="#82ca9d" />
+            </LineChart>
           </Paper>
           <Paper elevation={10} style={paperStyle} >
             <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -95,6 +102,7 @@ export default function GraficoDois() {
                 }
 
               </Select>
+
 
             </FormControl>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
