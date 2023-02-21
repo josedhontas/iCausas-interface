@@ -18,6 +18,10 @@ import {
 import Select from '@mui/material/Select';
 
 export default function GraficoDois() {
+  const getColor = (index) => {
+    const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    return colors[index % colors.length];
+  }
  
   const dd = require('./api/cc')
   const data = dd['cc']
@@ -31,15 +35,35 @@ export default function GraficoDois() {
   const [select3, setSelects3] = useState();
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
 
-  var datt = []
-  var dutt = []
-  var aux = []
-  let i;
-  for(i = select2; i <=select3; i++){
-    aux = (data[datas[i]]);
-    aux[select1].Ano = datas[i]
-    datt = datt.concat(aux[select1]);
-  }
+  const [selectedMaterias, setSelectedMaterias] = useState([]);
+
+  useEffect(() => {
+    if (select1 && select2 !== undefined && select3 !== undefined) {
+      let selectedData = [];
+      for (let i = select2; i <= select3; i++) {
+        let dataByYear = data[datas[i]];
+        let dataForMateria = dataByYear[select1];
+        dataForMateria.Ano = datas[i];
+        selectedData.push(dataForMateria);
+      }
+  
+      let foundIndex = selectedMaterias.findIndex((materia) => materia.nome === data2[select1].nome);
+  
+      if (foundIndex !== -1) {
+        let updatedSelectedMaterias = [...selectedMaterias];
+        updatedSelectedMaterias[foundIndex].data = updatedSelectedMaterias[foundIndex].data.map((item) => {
+          let found = selectedData.find((element) => element.Ano === item.Ano);
+          return found ? found : item;
+        });
+        setSelectedMaterias(updatedSelectedMaterias);
+      } else {
+        setSelectedMaterias((prevState) => [        ...prevState,        { nome: data2[select1].nome, data: selectedData },
+        ]);
+      }
+    }
+  }, [select1, select2, select3, selectedMaterias]);
+  
+  
 
   return (
     <div>
@@ -55,11 +79,11 @@ export default function GraficoDois() {
             },
           }}
         >
-<Paper elevation={10}>
+          <Paper elevation={10}>
             <LineChart
               width={500}
               height={300}
-              data={datt}
+              data={selectedMaterias.map(item => item.data).flat()}
               margin={{
                 top: 20,
                 right: 30,
@@ -73,24 +97,18 @@ export default function GraficoDois() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Line
-                type="monotone"
-                dataKey="Aprovados"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-              <Line type="monotone" dataKey="Reprovados" stroke="#82ca9d" />
+              {selectedMaterias.map((materia, index) => (
+                <Line key={index} type="monotone" dataKey="Reprovados" data={materia.data} name={materia.nome} stroke={getColor(index)} />
+              ))}
             </LineChart>
           </Paper>
-          <Paper elevation={10} style={paperStyle} >
+          <Paper elevation={10} style={paperStyle}>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Disciplina</InputLabel>
               <Select onChange={e => setSelects1(e.target.value)}>
-                {}
-                {materias.map(item => (
-                  <MenuItem value={item}>{data2[item].nome}</MenuItem>
-                ))
-                }
+                {materias.map((item, index) => (
+                  <MenuItem key={index} value={item}>{data2[item].nome}</MenuItem>
+                ))}
               </Select>
             </FormControl>
             <FormControl sx={{ m: 1, minWidth: 120 }}>

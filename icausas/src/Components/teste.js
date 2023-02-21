@@ -1,49 +1,41 @@
-import React, { useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
+import { useState } from 'react';
 
-const data = [
-  { name: 'Page A', uv: 4000, pv: 2400, amt: 2400 },
-  { name: 'Page B', uv: 3000, pv: 1398, amt: 2210 },
-  { name: 'Page C', uv: 2000, pv: 9800, amt: 2290 },
-  { name: 'Page D', uv: 2780, pv: 3908, amt: 2000 },
-  { name: 'Page E', uv: 1890, pv: 4800, amt: 2181 },
-  { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 },
-  { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 },
-];
+function Teste() {
+  const [data, setData] = useState([]);
 
-const Teste = () => {
-  const [selectedDataKeys, setSelectedDataKeys] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('');
-
-  const handleDropdownChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
-
-  const handleAddButtonClick = () => {
-    setSelectedDataKeys([...selectedDataKeys, selectedOption]);
+  const handleMonthChange = (event) => {
+    const month = event.target.value;
+    const newData = { name: month, uv: Math.floor(Math.random() * 5000), pv: Math.floor(Math.random() * 5000), amt: Math.floor(Math.random() * 5000) };
+    setData(prevData => [...prevData, newData]);
   };
 
   return (
-    <>
-      <select value={selectedOption} onChange={handleDropdownChange}>
-        <option value="">Selecione uma opção</option>
-        <option value="uv">UV</option>
-        <option value="pv">PV</option>
-        <option value="amt">AMT</option>
+    <div>
+      <select onChange={handleMonthChange}>
+        <option value="">Selecione um mês</option>
+        <option value="Janeiro">Janeiro</option>
+        <option value="Fevereiro">Fevereiro</option>
+        <option value="Março">Março</option>
+        <option value="Abril">Abril</option>
+        <option value="Maio">Maio</option>
+        <option value="Junho">Junho</option>
+        <option value="Julho">Julho</option>
+        <option value="Agosto">Agosto</option>
+        <option value="Setembro">Setembro</option>
+        <option value="Outubro">Outubro</option>
       </select>
-      <button disabled={!selectedOption} onClick={handleAddButtonClick}>Adicionar</button>
       <LineChart width={500} height={300} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <CartesianGrid stroke="#ccc" />
-        <Tooltip />
         <Legend />
-        {selectedDataKeys.map(dataKey => (
-          <Line key={dataKey} type="monotone" dataKey={dataKey} stroke="#8884d8" />
-        ))}
+        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+        <Line type="monotone" dataKey="amt" stroke="#ffc658" />
       </LineChart>
-    </>
+    </div>
   );
-};
+}
 
 export default Teste;
