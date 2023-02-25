@@ -1,0 +1,15 @@
+{
+    "name": "icausas",
+    "description": "Minha aplicação",
+    "image": "heroku/nodejs",
+    "addons": [
+      "heroku-postgresql"
+    ],
+    "buildpacks": [
+        {
+          "url": "https://github.com/mars/create-react-app-buildpack.git"
+        }
+      ]
+      
+  }
+  
