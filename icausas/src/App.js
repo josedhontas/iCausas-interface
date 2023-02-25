@@ -7,7 +7,7 @@ import GraficoDois from './Components/graficodois';
 
 function App() {
   return (
-    <Barramenu> </Barramenu>
+    <Login> </Login>
     );
 }
 

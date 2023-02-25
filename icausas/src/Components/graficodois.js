@@ -36,7 +36,6 @@ export default function GraficoDois() {
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
 
   const [selectedMaterias, setSelectedMaterias] = useState([]);
-
   useEffect(() => {
     if (select1 && select2 !== undefined && select3 !== undefined) {
       let selectedData = [];
@@ -44,24 +43,18 @@ export default function GraficoDois() {
         let dataByYear = data[datas[i]];
         let dataForMateria = dataByYear[select1];
         dataForMateria.Ano = datas[i];
-        selectedData.push(dataForMateria);
+        selectedData = selectedData.concat(dataForMateria);
       }
   
-      let foundIndex = selectedMaterias.findIndex((materia) => materia.nome === data2[select1].nome);
+      // Sort the selected data by year
+      let sortedData = selectedData.sort((a, b) => a.Ano.localeCompare(b.Ano));
   
-      if (foundIndex !== -1) {
-        let updatedSelectedMaterias = [...selectedMaterias];
-        updatedSelectedMaterias[foundIndex].data = updatedSelectedMaterias[foundIndex].data.map((item) => {
-          let found = selectedData.find((element) => element.Ano === item.Ano);
-          return found ? found : item;
-        });
-        setSelectedMaterias(updatedSelectedMaterias);
-      } else {
-        setSelectedMaterias((prevState) => [        ...prevState,        { nome: data2[select1].nome, data: selectedData },
-        ]);
-      }
+      setSelectedMaterias(prevState => [...prevState, { nome: data2[select1].nome, data: sortedData }]);
     }
-  }, [select1, select2, select3, selectedMaterias]);
+  }, [select1, select2, select3]);
+
+  
+  
   
   
 
@@ -93,7 +86,7 @@ export default function GraficoDois() {
 
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="Ano" />
+              <XAxis dataKey="Ano" uniqueBy="Ano" />
               <YAxis />
               <Tooltip />
               <Legend />
