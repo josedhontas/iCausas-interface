@@ -26,9 +26,9 @@ export default function GraficoDois() {
   const dd = require('./api/cc')
   const data = dd['cc']
   const datas = Object.keys(data)
+  const datasaux = ['2020.1', '2022.1'];
   const data2 = data['2019.2']
   const materias = Object.keys(data2)
-  const materiasaux = Object['2019.2']
 
   const [select1, setSelects1] = useState();
   const [select2, setSelects2] = useState();
@@ -36,6 +36,11 @@ export default function GraficoDois() {
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
 
   const [selectedMaterias, setSelectedMaterias] = useState([]);
+  fetch('https://cors-anywhere.herokuapp.com/https://icausas-application.herokuapp.com/cc/$%7Bselect2%7D/$%7Bselect3%7D/Aprovados')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
+
   useEffect(() => {
     if (select1 && select2 !== undefined && select3 !== undefined) {
       let selectedData = [];
@@ -107,7 +112,7 @@ export default function GraficoDois() {
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Inicio</InputLabel>
               <Select onChange={e => setSelects2(e.target.value)}>
-                {datas.map((item, i) => (
+                {datasaux.map((item, i) => (
                   <MenuItem value={i}>{item}</MenuItem>
                 ))
                 }
@@ -119,7 +124,7 @@ export default function GraficoDois() {
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Fim</InputLabel>
               <Select onChange={e => setSelects3(e.target.value)}>
-                {datas.map((item, i) => (
+                {datasaux.map((item, i) => (
                   <MenuItem value={i}>{item}</MenuItem>
                 ))
                 }
