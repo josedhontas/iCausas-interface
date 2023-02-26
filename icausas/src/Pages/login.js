@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -38,10 +40,33 @@ const useStyles = makeStyles((theme) => ({
 
 function Login() {
   const classes = useStyles();
+  const navigate = useNavigate();
 
-  const handleGoogleLogin = () => {
-    // Adicione aqui a lógica para iniciar o processo de autenticação do Google
-  };
+  function handleGoogleLogin() {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // O login do Google foi bem-sucedido. Você pode acessar os dados do usuário result.user e fazer o que precisar com eles.
+        if(!emailValido(result.user.email)){
+          auth.signOut(); 
+        } else {
+          navigate('/components/barramenu');
+        }
+      })
+      .catch((error) => {
+        // O login do Google falhou. Trate o erro aqui.
+        console.error(error);
+      });
+  }
+
+  function emailValido(email){
+    const permitidos = ['@academico.ufs.br', 'dcomp.ufs.br'];
+    const dominioEmail = email.split('@')[1];
+    return permitidos.includes(dominioEmail);
+  }
+  
+  
 
   return (
     <Box className={classes.container}>
