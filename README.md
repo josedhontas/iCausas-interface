@@ -13,4 +13,5 @@ __Bibliotecas usadas:__
 
 __Para executar o projeto digite no terminal:__
 - npm update --force
+- npm install --force // caso nao tenha o node_modules na maquina
 - npm start
