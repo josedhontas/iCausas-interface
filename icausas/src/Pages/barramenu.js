@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
-import GraficoUm from './graficoum';
+import GraficoUm from '../Components/graficoum';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -22,9 +22,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import HelpIcon from '@mui/icons-material/Help';
 import MessageIcon from '@mui/icons-material/Message';
-import GraficoDois from './graficodois';
+//import GraficoDois from '../Components/graficodois';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import Teste from "./teste";
+//import Teste from "../Components/teste";
 
 
 const drawerWidth = 240;
@@ -198,7 +198,6 @@ export default function Barramenu() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <GraficoDois></GraficoDois>
 
       </Main>
 

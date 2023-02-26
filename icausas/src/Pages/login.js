@@ -51,7 +51,7 @@ function Login() {
         if(!emailValido(result.user.email)){
           auth.signOut(); 
         } else {
-          navigate('/components/barramenu');
+          navigate('./barramenu');
         }
       })
       .catch((error) => {
