@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -39,9 +41,21 @@ const useStyles = makeStyles((theme) => ({
 function Login() {
   const classes = useStyles();
 
-  const handleGoogleLogin = () => {
-    // Adicione aqui a lógica para iniciar o processo de autenticação do Google
-  };
+
+  function handleGoogleLogin() {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // O login do Google foi bem-sucedido. Você pode acessar os dados do usuário result.user e fazer o que precisar com eles.
+      })
+      .catch((error) => {
+        // O login do Google falhou. Trate o erro aqui.
+        console.error(error);
+      });
+  }
+  
+  
 
   return (
     <Box className={classes.container}>
