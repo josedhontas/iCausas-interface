@@ -4,6 +4,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useHistory } from 'react-router-dom';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,11 +50,20 @@ function Login() {
     signInWithPopup(auth, provider)
       .then((result) => {
         // O login do Google foi bem-sucedido. Você pode acessar os dados do usuário result.user e fazer o que precisar com eles.
+        if(!emailValido(result.user.email)){
+          auth.signOut(); 
+        }
       })
       .catch((error) => {
         // O login do Google falhou. Trate o erro aqui.
         console.error(error);
       });
+  }
+
+  function emailValido(email){
+    const permitidos = ['@academico.ufs.br', 'dcomp.ufs.br'];
+    const dominioEmail = email.split('@')[1];
+    return permitidos.includes(dominioEmail);
   }
   
   
