@@ -1,13 +1,13 @@
-[debug] [2023-02-26T21:39:21.984Z] ----------------------------------------------------------------------
-[debug] [2023-02-26T21:39:21.989Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dhona\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
-[debug] [2023-02-26T21:39:21.990Z] CLI Version:   11.24.0
-[debug] [2023-02-26T21:39:21.991Z] Platform:      win32
-[debug] [2023-02-26T21:39:21.991Z] Node Version:  v18.12.1
-[debug] [2023-02-26T21:39:21.993Z] Time:          Sun Feb 26 2023 18:39:21 GMT-0300 (Horário Padrão de Brasília)
-[debug] [2023-02-26T21:39:21.994Z] ----------------------------------------------------------------------
+[debug] [2023-02-26T21:43:35.925Z] ----------------------------------------------------------------------
+[debug] [2023-02-26T21:43:35.929Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dhona\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2023-02-26T21:43:35.930Z] CLI Version:   11.24.0
+[debug] [2023-02-26T21:43:35.930Z] Platform:      win32
+[debug] [2023-02-26T21:43:35.930Z] Node Version:  v18.12.1
+[debug] [2023-02-26T21:43:35.932Z] Time:          Sun Feb 26 2023 18:43:35 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2023-02-26T21:43:35.933Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-02-26T21:39:22.015Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-02-26T21:39:22.016Z] > authorizing via signed-in user (dhonatas@academico.ufs.br)
+[debug] [2023-02-26T21:43:35.945Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-26T21:43:35.946Z] > authorizing via signed-in user (dhonatas@academico.ufs.br)
 [info] 
      ######## #### ########  ######## ########     ###     ######  ########
      ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
