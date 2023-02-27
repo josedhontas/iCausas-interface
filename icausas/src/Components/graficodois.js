@@ -40,10 +40,10 @@ export default function GraficoDois() {
 
 
   const [selectedMaterias, setSelectedMaterias] = useState([]);
-  /*fetch('https://cors-anywhere.herokuapp.com/https://icausas-application.herokuapp.com/cc/$%7Bselect2%7D/$%7Bselect3%7D/Aprovados')
+  fetch('https://icausas-application.herokuapp.com/cc/2020.1/2021.2/Aprovados')
   .then(response => response.json())
   .then(data => console.log(data))
-  .catch(error => console.error(error))*/
+  .catch(error => console.error(error))
 
   useEffect(() => {
     if (select1 && select2 !== undefined && select3 !== undefined) {
@@ -95,7 +95,7 @@ export default function GraficoDois() {
 
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="Ano" tickFormatter={tick => tick.slice(0, 4)}
+              <XAxis dataKey="Ano" tickFormatter={tick => tick.slice()}
               allowDuplicatedCategory={false}/> 
               <YAxis />
               <Tooltip />
