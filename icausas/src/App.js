@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Barramenu />} />
         <Route path="/" element={<GraficoDois />} />
-        <Route path="/barramenu" element={<Login />} />
+        <Route path="/barramenu" element={<Barramenu />} />
       </Routes>
     </Router>
   );

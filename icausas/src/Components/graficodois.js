@@ -6,7 +6,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import { Grid } from "@mui/material";
-import { Label } from 'recharts';
 
 import {
   LineChart,
@@ -18,54 +17,109 @@ import {
   Legend
 } from "recharts";
 import Select from '@mui/material/Select';
-
 export default function GraficoDois() {
   const getColor = (index) => {
     const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
     return colors[index % colors.length];
   }
- 
-  const dd = require('./api/cc')
-  const data = dd['cc']
-  const datas = Object.keys(data)
-  const datasaux = ['2020.1', '2022.1'];
-  const data2 = data['2019.2']
-  const materias = Object.keys(data2)
 
-  const [select1, setSelects1] = useState();
-  const [select2, setSelects2] = useState();
-  const [select3, setSelects3] = useState();
+  const datas = ['2018.2', '2019.1', '2019.2', '2020.1', '2020.2', '2021.1', '2021.2']
+
+  const [select1, setSelects1] = useState([]);
+  const [select2, setSelects2] = useState(null);
+  const [select3, setSelects3] = useState(null);
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
-  const [firstRender, setFirstRender] = useState(true);
+
+  const updateSelect3 = (value) => {
+    const year = parseInt(value.split('.')[0], 10);
+    const semester = parseInt(value.split('.')[1], 10);
+    if (semester === 2) {
+      return `${year + 1}.1`;
+    } else {
+      return `${year}.${semester + 1}`;
+    }
+  };  
+
+  function MyComponent() {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      if (select2 !== null && select3 !== null) {
+        fetch(`https://icausas-application.herokuapp.com/cc/${select2}/${select3}/Aprovados`)
+          .then(response => response.json())
+          .then(data => {
+            const newData = data.map(item => ({
+              nome: item.nome,
+              data: item.data,
+              intervalo: item.intervalo
+            }));
+            setData(newData);
+          });
+      }
+    }, [select2, select3]);
+
+    return (
+      <Select onChange={e => setSelects1(e.target.value)}>
+        {data.map((item, index) => (
+          <MenuItem key={index} value={item} label={item.nome}>{item.nome}</MenuItem>
+        ))}
+      </Select>
+    );
+  }
 
 
-  const [selectedMaterias, setSelectedMaterias] = useState([]);
-  fetch('https://icausas-application.herokuapp.com/cc/2020.1/2021.2/Aprovados')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error))
 
   useEffect(() => {
-    if (select1 && select2 !== undefined && select3 !== undefined) {
-      let selectedData = [];
-      for (let i = select2; i <= select3; i++) {
-        let dataByYear = data[datas[i]];
-        let dataForMateria = dataByYear[select1];
-        dataForMateria.Ano = datas[i];
-        selectedData = selectedData.concat(dataForMateria);
-      }
-  
-      // Sort the selected data by year
-      let sortedData = selectedData.sort((a, b) => a.Ano.localeCompare(b.Ano));
-  
-      setSelectedMaterias(prevState => [...prevState, { nome: data2[select1].nome, data: sortedData }]);
-    }
-  }, [select1, select2, select3]);
+    console.log(select1);
+  }, [select1]);
 
+  const generateIntervals = (start, end) => {
+    const intervals = [];
+    const startYear = parseInt(start.split('.')[0], 10);
+    const endYear = parseInt(end.split('.')[0], 10);
+    const startSemester = parseInt(start.split('.')[1], 10);
+    const endSemester = parseInt(end.split('.')[1], 10);
+  
+    for (let year = startYear; year < endYear; year++) {
+      for (let semester = 1; semester <= 2; semester++) {
+        if (year === startYear && semester < startSemester) {
+          continue;
+        }
+        if (year === endYear && semester > endSemester) {
+          continue;
+        }
+        intervals.push(`${year}.${semester}`);
+      }
+    }
+  
+    return intervals;
+  };
+  
+  const Chart = () => {
+    if(select1.length !== 0){
+    const intervals = generateIntervals(select1.intervalo[0], select1.intervalo[1]);
+  
+    const chartData = intervals.map((interval, index) => {
+      const value = select1.data[index] || null;
+      return {
+        name: interval,
+        value
+      };
+    });
   
   
-  
-  
+    return (
+      <LineChart width={600} height={300} data={chartData}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+      </LineChart>
+    );
+  };
+}
 
   return (
     <div>
@@ -82,43 +136,19 @@ export default function GraficoDois() {
           }}
         >
           <Paper elevation={10}>
-            <LineChart
-              width={500}
-              height={300}
-              data={selectedMaterias.map(item => item.data).flat()}
-              margin={{
-                top: 20,
-                right: 30,
-                left: 20,
-                bottom: 10
-              }}
-
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="Ano" tickFormatter={tick => tick.slice()}
-              allowDuplicatedCategory={false}/> 
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              {selectedMaterias.map((materia, index) => (
-                <Line key={index} type="monotone" dataKey="Reprovados" data={materia.data} name={materia.nome} stroke={getColor(index)} />
-              ))}
-            </LineChart>
+            <Chart></Chart>
           </Paper>
           <Paper elevation={10} style={paperStyle}>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Disciplina</InputLabel>
-              <Select onChange={e => setSelects1(e.target.value)}>
-                {materias.map((item, index) => (
-                  <MenuItem key={index} value={item}>{data2[item].nome}</MenuItem>
-                ))}
-              </Select>
+              <MyComponent></MyComponent>
             </FormControl>
+
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Inicio</InputLabel>
               <Select onChange={e => setSelects2(e.target.value)}>
                 {datas.map((item, i) => (
-                  <MenuItem value={i}>{item}</MenuItem>
+                  <MenuItem value={item}>{item}</MenuItem>
                 ))
                 }
 
@@ -128,14 +158,12 @@ export default function GraficoDois() {
             </FormControl>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="">Fim</InputLabel>
-              <Select onChange={e => setSelects3(e.target.value)}>
-                {datas.map((item, i) => (
-                  <MenuItem value={i}>{item}</MenuItem>
-                ))
-                }
+              <Select onChange={e => setSelects3(updateSelect3(e.target.value))}>
+  {datas.map((item, i) => (
+    <MenuItem key={i} value={item}>{item}</MenuItem>
+  ))}
+</Select>
 
-
-              </Select>
 
             </FormControl>
 
@@ -153,7 +181,6 @@ export default function GraficoDois() {
 }
 
 
-var datax;
 
 
 

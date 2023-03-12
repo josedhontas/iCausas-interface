@@ -25,8 +25,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import GraficoDois from '../Components/graficodois';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useNavigate } from 'react-router-dom';
-
-//import Teste from "../Components/teste";
+import Teste from "../Components/teste";
 
 
 const drawerWidth = 240;
@@ -200,7 +199,7 @@ export default function Barramenu() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-              <GraficoUm></GraficoUm>
+              <GraficoDois></GraficoDois>
 
       </Main>
 
