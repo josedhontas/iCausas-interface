@@ -28,6 +28,7 @@ export default function GraficoDois() {
   const [select1, setSelects1] = useState([]);
   const [select2, setSelects2] = useState(null);
   const [select3, setSelects3] = useState(null);
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
 
   const updateSelect3 = (value) => {
@@ -42,7 +43,7 @@ export default function GraficoDois() {
 
   function MyComponent() {
     const [data, setData] = useState([]);
-
+  
     useEffect(() => {
       if (select2 !== null && select3 !== null) {
         fetch(`https://icausas-application.herokuapp.com/cc/${select2}/${select3}/Aprovados`)
@@ -57,15 +58,20 @@ export default function GraficoDois() {
           });
       }
     }, [select2, select3]);
-
+  
+    const handleSelectChange = (event) => {
+      setSelectedSubjects([...selectedSubjects, event.target.value]);
+    };
+  
     return (
-      <Select onChange={e => setSelects1(e.target.value)}>
+      <Select onChange={handleSelectChange}>
         {data.map((item, index) => (
           <MenuItem key={index} value={item} label={item.nome}>{item.nome}</MenuItem>
         ))}
       </Select>
     );
   }
+  
 
 
 
@@ -96,17 +102,22 @@ export default function GraficoDois() {
   };
   
   const Chart = () => {
-    if(select1.length !== 0){
-    const intervals = generateIntervals(select1.intervalo[0], select1.intervalo[1]);
+    if(selectedSubjects.length === 0){
+      return null;
+    }
+  
+    const intervals = generateIntervals(selectedSubjects[0].intervalo[0], selectedSubjects[0].intervalo[1]);
   
     const chartData = intervals.map((interval, index) => {
-      const value = select1.data[index] || null;
+      const data = selectedSubjects.map(subject => subject.data[index] || null);
       return {
         name: interval,
-        value
+        ...data.reduce((obj, value, index) => ({
+          ...obj,
+          [`value${index}`]: value,
+        }), {}),
       };
     });
-  
   
     return (
       <LineChart width={600} height={300} data={chartData}>
@@ -115,11 +126,19 @@ export default function GraficoDois() {
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+        {selectedSubjects.map((subject, index) => (
+          <Line
+            key={index}
+            type="monotone"
+            dataKey={`value${index}`}
+            stroke={getColor(index)}
+            activeDot={{ r: 8 }}
+          />
+        ))}
       </LineChart>
     );
   };
-}
+  
 
   return (
     <div>
