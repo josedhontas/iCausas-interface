@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import React, { useEffect, useState } from "react";
 import Paper from '@mui/material/Paper';
+import axios from 'axios';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -46,16 +47,18 @@ export default function GraficoDois() {
   
     useEffect(() => {
       if (select2 !== null && select3 !== null) {
-        const url = `https://icausas-application.herokuapp.com/cc/${select2}/${select3}/Aprovados`
-        fetch(url, { headers: { 'Content-Type': 'application/json; charset=utf-8'}})
-          .then(response => response.json())
-          .then(data => {
-            const newData = data.map(item => ({
+        const url = `https://icausas-application.herokuapp.com/cc/${select2}/${select3}/Aprovados`;
+        axios.get(url)
+          .then(response => {
+            const newData = response.data.map(item => ({
               nome: item.nome,
               data: item.data,
               intervalo: item.intervalo
             }));
             setData(newData);
+          })
+          .catch(error => {
+            console.error(error);
           });
       }
     }, [select2, select3]);
