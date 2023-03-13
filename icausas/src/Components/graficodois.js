@@ -31,6 +31,7 @@ export default function GraficoDois() {
   const [select3, setSelects3] = useState(null);
   const [selectedSubjects, setSelectedSubjects] = useState([]);
   const paperStyle = { padding: 15, height: '25vh', width: 280 }
+  const paperStyle2 = {height: '35vh', width: 800 }
 
   const updateSelect3 = (value) => {
     const year = parseInt(value.split('.')[0], 10);
@@ -47,7 +48,7 @@ export default function GraficoDois() {
   
     useEffect(() => {
       if (select2 !== null && select3 !== null) {
-        const url = `https://icausas-application.herokuapp.com/cc/${select2}/${select3}/Aprovados`;
+        const url = `https://icausas-application.herokuapp.com/cc/${select2}/${select3}/Reprovados`;
         axios.get(url)
           .then(response => {
             const newData = response.data.map(item => ({
@@ -124,7 +125,7 @@ export default function GraficoDois() {
     });
   
     return (
-      <LineChart width={600} height={300} data={chartData}>
+      <LineChart width={780} height={300} data={chartData}>
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
@@ -158,7 +159,7 @@ export default function GraficoDois() {
             },
           }}
         >
-          <Paper elevation={10}>
+          <Paper elevation={10} style={paperStyle2}>
             <Chart></Chart>
           </Paper>
           <Paper elevation={10} style={paperStyle}>
