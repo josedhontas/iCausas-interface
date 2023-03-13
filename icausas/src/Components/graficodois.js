@@ -46,7 +46,8 @@ export default function GraficoDois() {
   
     useEffect(() => {
       if (select2 !== null && select3 !== null) {
-        fetch(`https://icausas-application.herokuapp.com/cc/${select2}/${select3}/Aprovados`)
+        const url = `https://icausas-application.herokuapp.com/cc/${select2}/${select3}/Aprovados`
+        fetch(url, { headers: { 'Content-Type': 'application/json; charset=utf-8'}})
           .then(response => response.json())
           .then(data => {
             const newData = data.map(item => ({
@@ -114,7 +115,7 @@ export default function GraficoDois() {
         name: interval,
         ...data.reduce((obj, value, index) => ({
           ...obj,
-          [`value${index}`]: value,
+          [`${selectedSubjects[index].nome}`]: value,
         }), {}),
       };
     });
@@ -130,7 +131,7 @@ export default function GraficoDois() {
           <Line
             key={index}
             type="monotone"
-            dataKey={`value${index}`}
+            dataKey={subject.nome}
             stroke={getColor(index)}
             activeDot={{ r: 8 }}
           />
